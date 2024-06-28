@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"time"
 )
 
 func greet(w http.ResponseWriter, r *http.Request) {
 	resp := r.PathValue("id")
-	fmt.Fprintf(w, "Hello World! %s", time.Now())
+	fmt.Fprintf(w, "Hello World! %s", resp)
 }
 
 func main() {
