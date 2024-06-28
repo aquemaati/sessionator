@@ -1,0 +1,17 @@
+{
+      "name": "Go Dev Container",
+      "build": {
+          "dockerfile": "Dockerfile"
+      },
+      "customizations": {
+          "vscode": {
+              "settings": {},
+              "extensions": [
+                  "golang.go"
+              ]
+          }
+      },
+      "forwardPorts": [8080],
+      "workspaceFolder": "/workspace"
+  }
+  

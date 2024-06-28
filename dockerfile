@@ -1,15 +1,25 @@
+# Utiliser une image de base Ubuntu
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
-# Install the xz-utils package
-RUN apt-get update && apt-get install -y xz-utils curl
+# Installer les dépendances nécessaires
+RUN apt-get update && apt-get install -y \
+    xz-utils \
+    curl \
+    build-essential
 
-# Install Go 1.22.4
+# Installer Go 1.22.4
 RUN curl -OL https://golang.org/dl/go1.22.4.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz && \
     rm go1.22.4.linux-amd64.tar.gz
 
-# Set up Go environment variables
+# Configurer les variables d'environnement pour Go
 ENV PATH="/usr/local/go/bin:${PATH}"
 
-# Verify Go installation
-RUN go version
+# Définir le répertoire de travail
+WORKDIR /workspace
+
+# Exposer le port (si nécessaire)
+EXPOSE 8080
+
+# Commande par défaut (si nécessaire)
+CMD ["bash"]
