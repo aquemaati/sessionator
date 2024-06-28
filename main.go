@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+	"time"
+)
+
+func greet(w http.ResponseWriter, r *http.Request) {
+	resp := r.PathValue("id")
+	fmt.Fprintf(w, "Hello World! %s", time.Now())
+}
 
 func main() {
-	fmt.Println("Hello World")
+	http.HandleFunc("/post/{id}", greet)
+	http.ListenAndServe(":8080", nil)
 }
